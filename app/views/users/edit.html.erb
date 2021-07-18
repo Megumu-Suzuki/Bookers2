@@ -1,7 +1,23 @@
-<p id="notice"></p>
 <div class="container">
 	<div class="row">
 		<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+			<div id="error_explanation">
+	 		<% if @user.errors.any? %>
+    	<h2><%= @user.errors.count %> error prohibited this obj from being saved:</h2>
+    	<ul>
+    		<% if @user.errors.include?(:name) %>
+       		<li>
+        		<%= @user.errors.full_messages_for(:name).first %>
+      		<% end %>
+       		</li>
+     		<% if @user.errors.include?(:introduction) %>
+    		<li>
+       			<%= @user.errors.full_messages_for(:introduction).first %>
+      		<% end %>
+        	</li>
+    	</ul>
+    	<% end %>
+  	</div>
 			<h2>User info</h2>
 			<%= form_with model: @user, local:true do |f| %>
 			<div class="form-group">

@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_07_17_044232) do
 
   create_table "books", force: :cascade do |t|
-    t.text "title"
+    t.string "title"
     t.text "body"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 2021_07_17_044232) do
     t.text "introduction"
     t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 

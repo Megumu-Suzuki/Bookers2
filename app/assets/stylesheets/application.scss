@@ -13,4 +13,18 @@
  *= require_tree .
  *= require_self
  */
+ .fa, .fas {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+    line-height: normal;
+ }
+
+ #error_explanation {
+    color: red;
+ }
+ #notice {
+    color: green;
+ }
+
  @import "bootstrap"
+
