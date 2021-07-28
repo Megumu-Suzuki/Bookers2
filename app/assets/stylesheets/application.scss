@@ -26,5 +26,16 @@
     color: green;
  }
 
- @import "bootstrap"
 
+ .text-blue {
+  color: blue;
+ }
+
+ .text-red{
+  color: red;
+ }
+
+ .new-comment{
+  width: 100%;
+ }
+ @import "bootstrap"
