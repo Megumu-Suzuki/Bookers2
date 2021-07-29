@@ -16,9 +16,9 @@ class UsersController < ApplicationController
 		@user = User.find(params[:id])
 		if @user == current_user
     	render "edit"
-     else
+		else
       redirect_to user_path(current_user.id)
-     end
+		end
 	end
 
 	def update
@@ -29,6 +29,16 @@ class UsersController < ApplicationController
 			render :edit
 		end
 	end
+
+	def following
+    @user  = User.find(params[:id])
+    @users = @user.following
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+  end
 
 	private
 
