@@ -44,15 +44,26 @@
 					</tr>
 				</tbody>
 			</table>
+
 			<div class="row">
 			<% if @user.id == current_user.id %>
 				<%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
 				<i class="fas fa-user-cog"></i>
 				<% end %>
 			<% else %>
-				<%= link_to edit_user_path(@user.id), class:"btn btn-outline-secondary btn-block" do %>
-				<i class="fas fa-user-cog"></i>
-				<% end %>
+				<% unless current_user == @user %>
+								<% if current_user.following?(@user) %>
+									<%= form_for(current_user.active_relationships.find_by(followed_id: @user.id),
+        							html: { method: :delete }) do |f| %>
+									<%= f.submit "フォロー外す", class: "btn btn-primary" %>
+									<% end %>
+								<% else %>
+									<%= form_for(current_user.active_relationships.build) do |f| %>
+									<div><%= hidden_field_tag :followed_id, @user.id %></div>
+								 	<%= f.submit "フォローする", class: "btn btn-success" %>
+									<% end %>
+								<% end %>
+							<% end %>
 			<% end %>
 
 			</div>
