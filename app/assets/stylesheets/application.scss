@@ -38,4 +38,15 @@
  .new-comment{
   width: 100%;
  }
+
+ .typesubmit{
+  color: #007bff;
+  background-color: transparent;
+  border-style: none;
+  text-decoration: none;
+ }
+ .typesubmit:hover{
+  text-decoration: underline;
+ }
+ 
  @import "bootstrap"

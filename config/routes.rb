@@ -16,8 +16,8 @@ Rails.application.routes.draw do
     get :tigers
     end
 
-    resources :relationships, only: [:create, :destroy]
-  end
 
+  end
+ resources :relationships, only: [:create, :destroy]
 
 end
