@@ -1,15 +1,15 @@
 <% if book.errors.any? %>
-	<h2><%= book.errors.count %> error prohibited this obj from being saved:</h2>
+  <h2><%= book.errors.count %> error prohibited this obj from being saved:</h2>
   <ul>
-  	<% if book.errors.include?(:title) %>
-    	<li>
-    		<%= book.errors.full_messages_for(:title).first %>
+    <% if book.errors.include?(:title) %>
+      <li>
+        <%= book.errors.full_messages_for(:title).first %>
     <% end %>
-   		</li>
+      </li>
     <% if book.errors.include?(:body) %>
-    	<li>
-      	<%= book.errors.full_messages_for(:body).first %>
+      <li>
+        <%= book.errors.full_messages_for(:body).first %>
     <% end %>
       </li>
   </ul>
-<% end %>
+  <% end %>
