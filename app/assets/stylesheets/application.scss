@@ -48,5 +48,23 @@
  .typesubmit:hover{
   text-decoration: underline;
  }
- 
+
+.search-form-box{
+ margin-top: 5px;
+ display: flex;
+ justify-content: center;
+}
+
+.search-form{
+ display: flex;
+}
+.text-field{
+ margin-right: 5px;
+}
+
+ #search_title{
+  width: 250px;
+ }
+
+
  @import "bootstrap"

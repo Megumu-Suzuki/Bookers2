@@ -1,0 +1,14 @@
+<div class="search-form-box">
+	<%= form_with url: search_path, method: :get, local: true do |f| %>
+		<div class="search-form">
+			<div class="text-field">
+				<%= f.text_field 'search[content]', class:"form-control search_title", id:"search_title" %>
+			</div>
+			<div class="select_field">
+				<%= f.select 'search[model]', options_for_select({"user" => "user", "book" => "book"}) %>
+				<%= f.select 'search[method]', options_for_select({"完全一致" => "perfect_match", "前方一致" => "forward_match", "後方一致" => "backward_match", "部分一致" => "partial_match"}) %>
+				<%= submit_tag '検索' %>
+			</div>
+		</div>
+	<% end %>
+</div>
