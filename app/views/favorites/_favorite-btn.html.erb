@@ -1,0 +1,13 @@
+<% if book.favorited_by?(current_user) %>
+	<span>
+		<%= link_to book_favorites_path(book.id), class:"text-red", method: :delete, remote: true do %>
+		<i class="fa fa-heart unlike"="true"></i> <%= book.favorites.count %>
+		<% end %>
+	</span>
+<% else %>
+	<span>
+		<%= link_to book_favorites_path(book.id), class:"text-blue", method: :post, remote: true do %>
+		<i class="fa fa-heart"="true"></i> <%= book.favorites.count %>
+		<% end %>
+	</span>
+<% end %>
