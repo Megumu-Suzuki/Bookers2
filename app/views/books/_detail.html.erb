@@ -26,7 +26,7 @@
 			</td>
 				<% end %>
 			<td class="comment-count">
-				<%= render 'book_comments/comment-count', book: book %>
+				<p>コメント件数：<%= book.book_comments.count %></p>
 			</td>
 		</tr>
 	</tbody>
