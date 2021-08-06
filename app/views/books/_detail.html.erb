@@ -25,8 +25,8 @@
 				<%= link_to 'Destroy' , book_path(book.id), method: :delete, class:"btn btn-sm btn-danger", "data-confirm" => "本当に消しますか？"  %>
 			</td>
 				<% end %>
-			<td>
-				<p>コメント件数：<%= book.book_comments.count %></p>
+			<td class="comment-count">
+				<%= render 'book_comments/comment-count', book: book %>
 			</td>
 		</tr>
 	</tbody>
