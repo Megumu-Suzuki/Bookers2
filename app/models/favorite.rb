@@ -3,4 +3,5 @@ class Favorite < ApplicationRecord
 	belongs_to :user
 
 	validates_uniqueness_of :book_id, scope: :user_id
+	#本一つにユーザーは一人だけ（複数回のいいねを防ぐ）
 end
