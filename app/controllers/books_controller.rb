@@ -2,7 +2,16 @@ class BooksController < ApplicationController
 
   def index
     @book = Book.new
-    @books = Book.all
+    #一週間でいいねの多い順で投稿を表示
+    to = Time.current.at_end_of_day
+    from = (to - 6.day).at_beginning_of_day
+    @books = Book.includes(:favorited_users).
+      sort {|a,b|
+        b.favorited_users.includes(:favorites).where(created_at: from...to).size <=>
+        a.favorited_users.includes(:favorites).where(created_at: from...to).size
+      }
+    # {|a,b|a.to_i <=> b.to_i}だと昇順になる
+    #今回で言うといいねの少ない順
   end
 
   def create

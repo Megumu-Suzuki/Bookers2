@@ -20,7 +20,12 @@
 			</tr>
 			<tr>
 				<th>favorite books</th>
-				<th><%= link_to user.favorite_books.count, user_favorite_path(user.id) %></th>
+				<th class="favorite-count">
+					<%= link_to "一覧", favorite_user_path(user.id) %>
+					<!--link_to user.favorites.count, favorite_user_path(user.id)-->
+					<!-- render "favorites/favorite-count", user: user -->
+					<!--自分のページだとうまくいくが他人のページでもいいねの数が変動してしまう-->
+				</th>
 			</tr>
 		</tbody>
 </table>

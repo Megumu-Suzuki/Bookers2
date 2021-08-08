@@ -1,5 +1,5 @@
 <h2>Favorite Books</h2>
-<% if @books.exists? %>
+<% if @favorites.exists? %>
 	<table class="table">
 			<thead>
 				<tr>
@@ -10,7 +10,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @books.each do |book| %>
+				<% @user.favorite_books.each do |book| %>
 					<tr>
 						<td>
 							<%= attachment_image_tag book.user, :profile_image, size: "40x40", format: 'jpeg', class:"attachment user profile_image fallback", fallback: "no_image.jpg"%>
