@@ -1,5 +1,27 @@
 <table class="table">
 	<%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', class:"attachment user profile_image fallback", fallback: "no_image.jpg" %>
+<div>
+	<% unless user.id == current_user.id %>
+		<% if (current_user.following? user) && (user.following? current_user) %>
+			<% if @haveRoom ==  true %>
+				<p>
+					<%= link_to room_path(@roomId) do %>
+					<i class="far fa-comment"></i>
+					<% end %>
+				</p>
+			<% else %>
+				<%= form_with model: @room, local:true do |f| %>
+					<%= fields_for @entry do |e| %>
+						<%= e.hidden_field :user_id, value: user.id %>
+					<% end %>
+					<%= f.button :type => "submit", style: 'border-style: none; background-color: #fff;' do %>
+						<i class="far fa-comment"></i>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+</div>
 		<tbody>
 			<tr></tr>
 			<tr>
@@ -39,6 +61,6 @@
   <% else %>
     <%= link_to edit_user_path(current_user.id), class:"btn btn-outline-secondary btn-block" do %>
 		<i class="fas fa-user-cog"></i>
-	<% end %>
+		<% end %>
   <% end %>
 </div>

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 					# 同じIDを持っていた時
 					if cu.room_id == u.room_id
 						# if ~ true => elseの状況を作るための定義
-						@isRoom = true
+						@haveRoom = true
 						# 同じIDをIDとしてページ遷移するときに使う
 						@roomID = cu.room_id
 					end
@@ -26,12 +26,11 @@ class UsersController < ApplicationController
 			end
 			# 同じIDを持ってなかったら
 			# 意味はわかる
-			unless @isRoom # = trueってこと？
+			unless @haveRoom # = trueってこと？
 				@room = Room.new
 				@entry = Entry.new
 			end
 		end
-
 		@book = Book.new
 		@books = @user.books
 	end
@@ -43,7 +42,7 @@ class UsersController < ApplicationController
 		else
       redirect_to user_path(current_user.id)
 		end
-	endl
+	end
 
 	def update
 		@user = User.find(params[:id])

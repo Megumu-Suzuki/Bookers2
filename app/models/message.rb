@@ -1,7 +1,7 @@
 class Message < ApplicationRecord
 	# 空白のメッセージは送れない
-	validates :content, presence:true
+	validates :content, presence:true, length: { maximum: 140 }
 	# たくさんのメッセージそれぞれにユーザーIDとルームのID
-	belogs_to :user
-	belogs_to :room
+	belongs_to :user
+	belongs_to :room
 end
