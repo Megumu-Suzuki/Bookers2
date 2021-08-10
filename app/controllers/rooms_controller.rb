@@ -3,8 +3,9 @@ class RoomsController < ApplicationController
 
 	def create
 		@room = Room.create
-		@joinCurrentUser = Entry.create(user_id: current_user.id, room_id: @room.id)
-		@joinUser = Entry.create(join_room_params)
+		@entry1 = Entry.create(user_id: current_user.id, room_id: @room.id)
+		
+		@entry2 = Entry.create(join_room_params)
 		redirect_to room_path(@room.id)
 	end
 

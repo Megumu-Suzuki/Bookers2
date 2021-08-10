@@ -1,55 +1,59 @@
 <table class="table">
-	<%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', class:"attachment user profile_image fallback", fallback: "no_image.jpg" %>
-<div>
-	<% unless user.id == current_user.id %>
-		<% if (current_user.following? user) && (user.following? current_user) %>
-			<% if @haveRoom ==  true %>
-				<p>
-					<%= link_to room_path(@roomId) do %>
-					<i class="far fa-comment"></i>
-					<% end %>
-				</p>
-			<% else %>
-				<%= form_with model: @room, local:true do |f| %>
-					<%= fields_for @entry do |e| %>
-						<%= e.hidden_field :user_id, value: user.id %>
-					<% end %>
-					<%= f.button :type => "submit", style: 'border-style: none; background-color: #fff;' do %>
-						<i class="far fa-comment"></i>
+	<div class="info">
+		<div class="image box">
+			<%= attachment_image_tag user, :profile_image, size: "100x100", format: 'jpeg', class:"attachment user profile_image fallback", fallback: "no_image.jpg" %>
+		</div>
+		<div class="dm box">
+			<% unless user.id == current_user.id %>
+				<% if (current_user.following? user) && (user.following? current_user) %>
+					<% if @haveRoom ==  true %>
+						<p>
+							<%= link_to room_path(@roomId) do %>
+							<i class="far fa-comment fa-3x"></i>
+							<% end %>
+						</p>
+					<% else %>
+						<%= form_with model: @room, local:true do |f| %>
+							<%= fields_for @entry do |e| %>
+								<%= e.hidden_field :user_id, value: user.id %>
+							<% end %>
+							<%= f.button :type => "submit", style: 'border-style: none; background-color: #fff;' do %>
+								<i class="far fa-comment fa-3x"></i>
+							<% end %>
+						<% end %>
 					<% end %>
 				<% end %>
 			<% end %>
-		<% end %>
-	<% end %>
-</div>
-		<tbody>
-			<tr></tr>
-			<tr>
-				<th>name</th>
-				<th><%= user.name %></th>
-			</tr>
-			<tr>
-				<th>introduction</th>
-				<th><%= user.introduction %></th>
-			</tr>
-			<tr>
-				<th>follows</th>
-				<th><%= link_to user.following.count, user_following_path(user.id) %></th>
-			</tr>
-			<tr>
-				<th>followers</th>
-				<th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
-			</tr>
-			<tr>
-				<th>favorite books</th>
-				<th class="favorite-count">
-					<%= link_to "一覧", favorite_user_path(user.id) %>
-					<!--link_to user.favorites.count, favorite_user_path(user.id)-->
-					<!-- render "favorites/favorite-count", user: user -->
-					<!--自分のページだとうまくいくが他人のページでもいいねの数が変動してしまう-->
-				</th>
-			</tr>
-		</tbody>
+		</div>
+	<tbody>
+		<tr>
+		</tr>
+		<tr>
+			<th>name</th>
+			<th><%= user.name %></th>
+		</tr>
+		<tr>
+			<th>introduction</th>
+			<th><%= user.introduction %></th>
+		</tr>
+		<tr>
+			<th>follows</th>
+			<th><%= link_to user.following.count, user_following_path(user.id) %></th>
+		</tr>
+		<tr>
+			<th>followers</th>
+			<th><%= link_to user.followers.count, user_followers_path(user.id) %></th>
+		</tr>
+		<tr>
+			<th>favorite books</th>
+			<th class="favorite-count">
+				<%= link_to "一覧", favorite_user_path(user.id) %>
+				<!--link_to user.favorites.count, favorite_user_path(user.id)-->
+				<!-- render "favorites/favorite-count", user: user -->
+				<!--自分のページだとうまくいくが他人のページでもいいねの数が変動してしまう-->
+			</th>
+		</tr>
+	</tbody>
 </table>
 <div class="row">
 	<% if current_user != user %>

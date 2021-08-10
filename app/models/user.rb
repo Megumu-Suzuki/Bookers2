@@ -22,9 +22,8 @@ class User < ApplicationRecord
   # DM機能
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
-  has_many :rooms, through: :entries
 
-  
+
   def follow(user_id)
     active_relationships.create(followed_id: user_id)
   end

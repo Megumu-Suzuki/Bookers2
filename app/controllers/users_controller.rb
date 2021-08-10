@@ -16,11 +16,11 @@ class UsersController < ApplicationController
 			@currentUserEntry.each do |cu|
 				@userEntry.each do |u|
 					# 同じIDを持っていた時
-					if cu.room_id == u.room_id
+					if cu.room_id == u.room_id then
 						# if ~ true => elseの状況を作るための定義
 						@haveRoom = true
 						# 同じIDをIDとしてページ遷移するときに使う
-						@roomID = cu.room_id
+						@roomId = cu.room_id
 					end
 				end
 			end

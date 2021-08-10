@@ -69,3 +69,5 @@ gem 'jquery-rails'
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+# PV数(閲覧数)を取得
+gem 'impressionist', '~>1.6.1'
